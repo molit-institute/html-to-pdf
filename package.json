@@ -9,7 +9,7 @@
   "repository": "github:molitinstitute/html-to-pdf",
   "preferGlobal": true,
   "bin": {
-    "html-to-pdf": "bin/start"
+    "html-to-pdf": "bin/html-to-pdf"
   },
   "engines": {
     "node": ">=8"
