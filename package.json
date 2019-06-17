@@ -1,6 +1,6 @@
 {
   "name": "@molit/html-to-pdf",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.js",
   "scripts": {},
   "author": "MOLIT Institut gGmbH",
