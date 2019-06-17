@@ -8,7 +8,7 @@ const { version } = require('./package.json');
 program.version(version);
 program
   .option("-u, --url <url>", "sitemap url")
-  .option("-o, --out [path]", "output path of pdf documents", ".")
+  .option("-o, --out [path]", "output path of pdf documents", "./")
   .parse(process.argv);
 
 const outputFolder = program.out;
@@ -117,4 +117,4 @@ const htmlToPdf = async () => {
   }
 };
 
-htmlToPdf();
+module.exports = htmlToPdf;
