@@ -1,0 +1,22 @@
+{
+  "name": "html-to-pdf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "author": "MOLIT Institut gGmbH",
+  "description": "A cli app that converts html pages to pdf based on the sitemap.xml",
+  "license": "Apache-2.0",
+  "repository": "github:molitinstitute/html-to-pdf",
+  "preferGlobal": true,
+  "bin": {
+    "html-to-pdf": "bin/start"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "commander": "^2.20.0",
+    "puppeteer": "^1.17.0",
+    "sitemap-stream-parser": "^1.7.0"
+  }
+}
