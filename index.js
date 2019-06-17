@@ -2,8 +2,9 @@ const puppeteer = require("puppeteer");
 const sitemaps = require("sitemap-stream-parser");
 const fs = require("fs");
 const program = require("commander");
+const readline = require("readline");
 
-const { version } = require('./package.json');
+const { version } = require("./package.json");
 
 program.version(version);
 program
@@ -88,8 +89,8 @@ const generatePdfsFromUrls = async urls => {
 
     const title = await page.title();
 
-    process.stdout.clearLine();
-    process.stdout.cursorTo(0);
+    readline.clearLine(process.stdout);
+    readline.cursorTo(process.stdout, 0);
     process.stdout.write(
       `Progress: ${(((i + 1) / urls.length) * 100).toFixed(0)}% - ${filename}`
     );
