@@ -1,5 +1,5 @@
 {
-  "name": "html-to-pdf",
+  "name": "@molit/html-to-pdf",
   "version": "1.0.2",
   "main": "index.js",
   "scripts": {},
