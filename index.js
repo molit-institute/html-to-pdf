@@ -98,8 +98,8 @@ const generatePdfsFromUrls = async urls => {
 
   await browser.close();
 
-  process.stdout.clearLine();
-  process.stdout.cursorTo(0);
+  readline.clearLine(process.stdout);
+  readline.cursorTo(process.stdout, 0);
   process.stdout.write("Complete");
 };
 
