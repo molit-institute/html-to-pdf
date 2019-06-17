@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - lts/*
+script:
+  - echo "Starting deploy script..."
 deploy:
   provider: npm
   script: echo "Deploying to npm ..."
