@@ -71,36 +71,40 @@ const generatePdfsFromUrls = async urls => {
     throw new Error("No urls could be found.");
   }
 
-  console.log("Begin creating pdf files...");
+  try {
+    console.log("Begin creating pdf files...");
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-  for (let i = 0; i < urls.length; i++) {
-    const url = urls[i];
-    const filename = sanitizeFilename(url) + ".pdf";
+    for (let i = 0; i < urls.length; i++) {
+      const url = urls[i];
+      const filename = sanitizeFilename(url) + ".pdf";
 
-    await page.goto(url);
-    await page.pdf({
-      path: outputFolder + filename,
-      format: "A4",
-      displayHeaderFooter: true
-    });
+      await page.goto(url);
+      await page.pdf({
+        path: outputFolder + filename,
+        format: "A4",
+        displayHeaderFooter: true
+      });
 
-    const title = await page.title();
+      const title = await page.title();
+
+      readline.clearLine(process.stdout);
+      readline.cursorTo(process.stdout, 0);
+      process.stdout.write(
+        `Progress: ${(((i + 1) / urls.length) * 100).toFixed(0)}% - ${filename}`
+      );
+    }
+
+    await browser.close();
 
     readline.clearLine(process.stdout);
     readline.cursorTo(process.stdout, 0);
-    process.stdout.write(
-      `Progress: ${(((i + 1) / urls.length) * 100).toFixed(0)}% - ${filename}`
-    );
+    console.log("Complete");
+  } catch (e) {
+    throw new Error(e);
   }
-
-  await browser.close();
-
-  readline.clearLine(process.stdout);
-  readline.cursorTo(process.stdout, 0);
-  console.log("Complete");
 };
 
 const htmlToPdf = async () => {
