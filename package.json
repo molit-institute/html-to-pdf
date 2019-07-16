@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "commander": "^2.20.0",
-    "puppeteer": "^1.17.0",
+    "puppeteer": "^1.18.1",
     "sitemap-stream-parser": "^1.7.0"
   }
 }
