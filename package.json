@@ -18,8 +18,8 @@
     "access": "public"
   },
   "dependencies": {
-    "commander": "^2.20.0",
-    "puppeteer": "^1.18.1",
+    "commander": "^2.20.3",
+    "puppeteer": "^1.20.0",
     "sitemap-stream-parser": "^1.7.0"
   }
 }
