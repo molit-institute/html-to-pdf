@@ -2,8 +2,8 @@ name: publish
 
 # Triggers the workflow on create a new release
 on:
-  push:
-    branches: [ master ]
+  release:
+    types: [created]
 
 jobs:
   # This workflow contains 1 jobs
@@ -16,12 +16,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
-      # Caches Node.js modules 
+      # Caches Node.js modules
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm 
+          path: ~/.npm
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
@@ -32,4 +32,3 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-
