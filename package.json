@@ -2,7 +2,9 @@
   "name": "@molit/html-to-pdf",
   "version": "1.0.13",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint ./index.js"
+  },
   "author": "MOLIT Institut gGmbH",
   "description": "A cli app that converts html pages to pdf based on the sitemap.xml",
   "license": "Apache-2.0",
@@ -18,8 +20,14 @@
     "access": "public"
   },
   "dependencies": {
-    "commander": "^2.20.3",
-    "puppeteer": "^1.20.0",
+    "commander": "^7.0.0",
+    "puppeteer": "^5.5.0",
     "sitemap-stream-parser": "^1.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
   }
 }

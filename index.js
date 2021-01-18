@@ -6,19 +6,12 @@ const readline = require("readline");
 
 const { version } = require("./package.json");
 
-program.version(version);
-program
-  .option("-u, --url <url>", "sitemap url")
-  .option("-o, --out [path]", "output path of pdf documents", "./")
-  .parse(process.argv);
-
-const outputFolder = program.out;
-const url = program.url;
-
 /**
  * Create output folder if it does not exist.
+ *
+ * @param {String} outputFolder
  */
-const createOutputFolder = () => {
+const createOutputFolder = outputFolder => {
   if (!fs.existsSync(outputFolder)) {
     fs.mkdirSync(outputFolder);
   }
@@ -66,7 +59,13 @@ const getUrlsFromSiteMap = siteMapUrl => {
  */
 const sanitizeFilename = s => s.replace(/[^a-z0-9]/gi, "_").toLowerCase();
 
-const generatePdfsFromUrls = async urls => {
+/**
+ * Generates the pdf files.
+ *
+ * @param {Array} urls
+ * @param {String} outputFolder
+ */
+const generatePdfsFromUrls = async (urls, outputFolder) => {
   if (!urls || !urls.length) {
     throw new Error("No urls could be found.");
   }
@@ -107,19 +106,28 @@ const generatePdfsFromUrls = async urls => {
   }
 };
 
-const htmlToPdf = async () => {
+const htmlToPdf = async (url, out) => {
   if (!url) {
     console.log("No url specified, exiting.");
     return;
   }
 
   try {
-    createOutputFolder();
+    createOutputFolder(out);
     const urls = await getUrlsFromSiteMap(url);
-    generatePdfsFromUrls(urls);
+    generatePdfsFromUrls(urls, out);
   } catch (e) {
     console.log(e);
   }
 };
 
-module.exports = htmlToPdf;
+program.version(version);
+program
+  .arguments("<url>")
+  .description("", { url: "sitemap url" })
+  .option("-o, --out <path>", "output path of pdf documents", "./")
+  .action((url, opts) => {
+    htmlToPdf(url, opts.out);
+  });
+
+program.parse();
