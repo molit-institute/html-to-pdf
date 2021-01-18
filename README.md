@@ -17,11 +17,13 @@ npm i -g @molit/html-to-pdf
 ## Usage
 
 ```bash
-Usage: html-to-pdf [options]
+Usage: html-to-pdf [options] <url>
+
+Arguments:
+  url               sitemap url
 
 Options:
   -V, --version     output the version number
-  -u, --url <url>   sitemap url
-  -o, --out [path]  output path of pdf documents (default: "./")
-  -h, --help        output usage information
+  -o, --out <path>  output path of pdf documents (default: "./")
+  -h, --help        display help for command
 ```

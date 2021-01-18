@@ -82,7 +82,7 @@ const generatePdfsFromUrls = async (urls, outputFolder) => {
 
       await page.goto(url);
       await page.pdf({
-        path: outputFolder + filename,
+        path: outputFolder + "/" + filename,
         format: "A4",
         displayHeaderFooter: true
       });
